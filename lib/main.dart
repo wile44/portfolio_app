@@ -1,117 +1,186 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
+  debugPaintSizeEnabled = true;
+  // debugPaintBaselinesEnabled = true;
+  // debugPaintPointersEnabled = true;
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+  Widget _pageContent() {
+    return Container(
+      child: Container(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             Text(
-              'You have pushed the button this many times:',
+              'GOODLUCK WILE',
+              style: TextStyle(
+                fontSize: 20,
+                letterSpacing: 0.4,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+              ),
             ),
+            SizedBox(height: 6.0),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              'Software Engineer',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w400,
+                letterSpacing: 0.4,
+              ),
             ),
+            SizedBox(height: 10.0),
+            Text(
+              'Dar-es-salaam, Tanzania',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.4,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            SizedBox(
+              width: 150.0,
+              child: Divider(color: Colors.black45),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Container(
+              width: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.email,
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Email',
+                          )
+                        ],
+                      ),
+                      onTap: () => _launchURL(_emailUrl)),
+                  GestureDetector(
+                    onTap: () => _launchURL(_callUrl),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.call,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Call',
+                        )
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => _launchURL(_gitUrl),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.code,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Repos',
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 35),
+            SizedBox(
+              width: 150.0,
+              child: Divider(color: Colors.black45),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'About',
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              width: 260,
+              child: Text(
+                'I design and build beautiful Mobile and Web Apps for businesses around the globe. If you need a modern and powerful Apps, Ping me.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  letterSpacing: 0.1,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            SizedBox(height: 40),
+            SizedBox(
+                height: 60,
+                width: 150,
+                child: RaisedButton(
+                  color: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  onPressed: () => _launchURL(_emailUrl),
+                  child: Text(
+                    'Email me',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900),
+                  ),
+                ))
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'My Portfolio',
+        home: Scaffold(
+          body: SafeArea(
+            child: Container(
+              width: double.maxFinite,
+              child: Column(
+                children: [
+                  Text(
+                    'GOODLUCK WILE',
+                    style: TextStyle(
+                      fontSize: 20,
+                      letterSpacing: 0.4,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
 }
+
+const _gitUrl = 'https://github.com/wile44';
+const _emailUrl =
+    'mailto:goodluckwileonline@gmail.com?subject=Software Developer&body=Hi! Goodluck Wile';
+const _callUrl = 'tel:+255 713 931 387';
+void _launchURL(url) async =>
+    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
