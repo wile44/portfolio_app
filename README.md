@@ -1,16 +1,16 @@
-# Portfolio
+# Hola! Amigo Beinvenidos
 
-A new Flutter project.
+This is my Portfolio App
+This is a very first project in the GitHub as part of my course 
+I have Design and Develop it by using FF (wait what?)
+FF its Figma and Flutter 
 
-## Getting Started
+if you find it super handy be free to use it as part of your project
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+For any enquires or business 
+## Goodluckwileonline@gmail.com
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src="https://user-images.githubusercontent.com/51359849/118470080-061eb400-b70f-11eb-9f81-bf708bbde0e5.jpg" alt="me"  height="700">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ 
