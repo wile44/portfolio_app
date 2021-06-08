@@ -32,11 +32,22 @@ class MyApp extends StatelessWidget {
     );
   }
 
-_sizedBox(double height){
-  return SizedBox(
-    height: height,
-  )
-}
+  Widget _sizedBox(double height) {
+    return SizedBox(
+      height: height,
+    );
+  }
+
+  _myAvatar() {
+    return Positioned(
+      top: 40,
+      left: 90,
+      child: CircleAvatar(
+        radius: 60,
+        backgroundImage: AssetImage('images/Mask Group.png'),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -197,14 +208,7 @@ _sizedBox(double height){
                                     fontWeight: FontWeight.w900),
                               ),
                             ))),
-                    Positioned(
-                      top: 40,
-                      left: 90,
-                      child: CircleAvatar(
-                        radius: 60,
-                        backgroundImage: AssetImage('images/Mask Group.png'),
-                      ),
-                    ),
+                    _myAvatar(),
                   ],
                 ),
               ),
