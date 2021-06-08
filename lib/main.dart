@@ -6,6 +6,38 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final String _gitUrl = 'https://github.com/wile44';
+  final String _emailUrl =
+      'mailto:goodluckwileonline@gmail.com?subject=Software Developer&body=Hi! Goodluck Wile';
+  final String _callUrl = 'tel:+255 713 931 387';
+
+  //method for launch urls
+  void _launchURL(url) async {
+    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+  }
+
+//custom button for contact section
+  Widget _contactButton(String title, Icon iconName, String url) {
+    return GestureDetector(
+      onTap: () => _launchURL(url),
+      child: Column(
+        children: [
+          iconName,
+          SizedBox(height: 10),
+          Text(
+            title,
+          )
+        ],
+      ),
+    );
+  }
+
+_sizedBox(double height){
+  return SizedBox(
+    height: height,
+  )
+}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -71,47 +103,47 @@ class MyApp extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                GestureDetector(
-                                    child: Column(
-                                      children: [
-                                        Icon(
-                                          Icons.email,
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(
-                                          'Email',
-                                        )
-                                      ],
-                                    ),
-                                    onTap: () => _launchURL(_emailUrl)),
-                                GestureDetector(
-                                  onTap: () => _launchURL(_callUrl),
-                                  child: Column(
-                                    children: [
-                                      Icon(
-                                        Icons.call,
-                                      ),
-                                      SizedBox(height: 10),
-                                      Text(
-                                        'Call',
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () => _launchURL(_gitUrl),
-                                  child: Column(
-                                    children: [
-                                      Icon(
-                                        Icons.code,
-                                      ),
-                                      SizedBox(height: 10),
-                                      Text(
-                                        'Repos',
-                                      )
-                                    ],
-                                  ),
-                                ),
+                                // GestureDetector(
+                                //     child: Column(
+                                //       children: [
+                                //         Icon(
+                                //           Icons.email,
+                                //         ),
+                                //         SizedBox(height: 10),
+                                //         Text(
+                                //           'Email',
+                                //         )
+                                //       ],
+                                //     ),
+                                //     onTap: () => _launchURL(_emailUrl)),
+                                // GestureDetector(
+                                //   onTap: () => _launchURL(_callUrl),
+                                //   child: Column(
+                                //     children: [
+                                //       Icon(
+                                //         Icons.call,
+                                //       ),
+                                //       SizedBox(height: 10),
+                                //       Text(
+                                //         'Call',
+                                //       )
+                                //     ],
+                                //   ),
+                                // ),
+                                // GestureDetector(
+                                //   onTap: () => _launchURL(_gitUrl),
+                                //   child: Column(
+                                //     children: [
+                                //       Icon(
+                                //         Icons.code,
+                                //       ),
+                                //       SizedBox(height: 10),
+                                //       Text(
+                                //         'Repos',
+                                //       )
+                                //     ],
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
@@ -181,10 +213,3 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
-
-const _gitUrl = 'https://github.com/wile44';
-const _emailUrl =
-    'mailto:goodluckwileonline@gmail.com?subject=Software Developer&body=Hi! Goodluck Wile';
-const _callUrl = 'tel:+255 713 931 387';
-void _launchURL(url) async =>
-    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
