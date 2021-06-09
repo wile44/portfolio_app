@@ -17,17 +17,40 @@ class MyApp extends StatelessWidget {
   }
 
 //custom button for contact section
-  Widget _contactButton(String title, Icon iconName, String url) {
+  Widget _contactButton(String title, String url) {
     return GestureDetector(
       onTap: () => _launchURL(url),
       child: Column(
         children: [
-          iconName,
+          Icon(title == "Email" ? Icons.email : Icons.call_sharp),
           SizedBox(height: 10),
           Text(
             title,
           )
         ],
+      ),
+    );
+  }
+
+  Widget _flatButton() {
+    return Positioned(
+      right: 40,
+      left: 40,
+      bottom: 30,
+      child: Container(
+        height: 60,
+        width: 150,
+        child: RaisedButton(
+          color: Colors.black,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          onPressed: () => _launchURL(_emailUrl),
+          child: Text(
+            'Email me',
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
+          ),
+        ),
       ),
     );
   }
@@ -38,7 +61,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  _myAvatar() {
+  Widget _myAvatar() {
     return Positioned(
       top: 40,
       left: 90,
@@ -73,7 +96,7 @@ class MyApp extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(height: 80),
+                          _sizedBox(80.0),
                           Text(
                             'GOODLUCK WILE',
                             style: TextStyle(
@@ -83,7 +106,7 @@ class MyApp extends StatelessWidget {
                               fontStyle: FontStyle.normal,
                             ),
                           ),
-                          SizedBox(height: 6.0),
+                          _sizedBox(6.0),
                           Text(
                             'Dart | Flutter | Java | NodeJs | Firebase',
                             style: TextStyle(
@@ -92,7 +115,7 @@ class MyApp extends StatelessWidget {
                               letterSpacing: 0.4,
                             ),
                           ),
-                          SizedBox(height: 10.0),
+                          _sizedBox(10.0),
                           Text(
                             'Dar-es-salaam, Tanzania',
                             style: TextStyle(
@@ -101,69 +124,42 @@ class MyApp extends StatelessWidget {
                               letterSpacing: 0.4,
                             ),
                           ),
-                          SizedBox(height: 10.0),
+                          _sizedBox(10.0),
                           SizedBox(
                             width: 150.0,
                             child: Divider(color: Colors.black45),
                           ),
-                          SizedBox(
-                            height: 25,
-                          ),
+                          _sizedBox(25),
                           Container(
                             width: 200,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                // GestureDetector(
-                                //     child: Column(
-                                //       children: [
-                                //         Icon(
-                                //           Icons.email,
-                                //         ),
-                                //         SizedBox(height: 10),
-                                //         Text(
-                                //           'Email',
-                                //         )
-                                //       ],
-                                //     ),
-                                //     onTap: () => _launchURL(_emailUrl)),
-                                // GestureDetector(
-                                //   onTap: () => _launchURL(_callUrl),
-                                //   child: Column(
-                                //     children: [
-                                //       Icon(
-                                //         Icons.call,
-                                //       ),
-                                //       SizedBox(height: 10),
-                                //       Text(
-                                //         'Call',
-                                //       )
-                                //     ],
-                                //   ),
-                                // ),
-                                // GestureDetector(
-                                //   onTap: () => _launchURL(_gitUrl),
-                                //   child: Column(
-                                //     children: [
-                                //       Icon(
-                                //         Icons.code,
-                                //       ),
-                                //       SizedBox(height: 10),
-                                //       Text(
-                                //         'Repos',
-                                //       )
-                                //     ],
-                                //   ),
-                                // ),
+                                _contactButton('Email', _emailUrl),
+                                _contactButton("Call", _callUrl),
+                                GestureDetector(
+                                  onTap: () => _launchURL(_gitUrl),
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.code,
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        'Repos',
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                          SizedBox(height: 35),
+                          _sizedBox(35),
                           SizedBox(
                             width: 150.0,
                             child: Divider(color: Colors.black45),
                           ),
-                          SizedBox(height: 10),
+                          _sizedBox(10),
                           Text(
                             'About',
                             style: TextStyle(
@@ -171,7 +167,7 @@ class MyApp extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          _sizedBox(20),
                           Container(
                             width: 260,
                             child: Text(
@@ -184,30 +180,11 @@ class MyApp extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 40),
+                          _sizedBox(40),
                         ],
                       ),
                     ),
-                    Positioned(
-                        right: 40,
-                        left: 40,
-                        bottom: 30,
-                        child: Container(
-                            height: 60,
-                            width: 150,
-                            child: RaisedButton(
-                              color: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              onPressed: () => _launchURL(_emailUrl),
-                              child: Text(
-                                'Email me',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                            ))),
+                    _flatButton(),
                     _myAvatar(),
                   ],
                 ),
