@@ -20,11 +20,13 @@ class MyApp extends StatelessWidget {
       onTap: () => _launchURL(url),
       child: Column(
         children: [
-          Image(
-              image: title == "Email"
-                  ? AssetImage('Images/email.png')
-                  : AssetImage('Images/call.png')),
-          Icon(title == "Email" ? Icons.email : Icons.call_sharp),
+          Container(
+            height: 20.89,
+            child: Image(
+                image: title == "Email"
+                    ? AssetImage('images/email.png')
+                    : AssetImage('images/call.png')),
+          ),
           SizedBox(height: 10),
           Text(
             title,
@@ -95,8 +97,13 @@ class MyApp extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFFC4C4C4),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0),
+                          )),
                       margin: EdgeInsets.only(top: 90.0),
-                      color: Color(0xFFC4C4C4),
                       width: 300,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -146,11 +153,11 @@ class MyApp extends StatelessWidget {
                                   onTap: () => _launchURL(_gitUrl),
                                   child: Column(
                                     children: [
-                                      Image(
-                                          image:
-                                              AssetImage('Images/github.png')),
-                                      Icon(
-                                        Icons.code,
+                                      Container(
+                                        height: 19.95,
+                                        child: Image(
+                                            image: AssetImage(
+                                                'images/github.png')),
                                       ),
                                       SizedBox(height: 10),
                                       Text(
