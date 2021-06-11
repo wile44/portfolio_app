@@ -11,17 +11,19 @@ class MyApp extends StatelessWidget {
       'mailto:goodluckwileonline@gmail.com?subject=Software Developer&body=Hi! Goodluck Wile';
   final String _callUrl = 'tel:+255 713 931 387';
 
-  //method for launch urls
   void _launchURL(url) async {
     await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
   }
 
-//custom button for contact section
   Widget _contactButton(String title, String url) {
     return GestureDetector(
       onTap: () => _launchURL(url),
       child: Column(
         children: [
+          Image(
+              image: title == "Email"
+                  ? AssetImage('Images/email.png')
+                  : AssetImage('Images/call.png')),
           Icon(title == "Email" ? Icons.email : Icons.call_sharp),
           SizedBox(height: 10),
           Text(
@@ -77,6 +79,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'My Portfolio App',
+        theme: ThemeData(
+          fontFamily: 'Mulish',
+        ),
         home: Scaffold(
           body: Container(
             decoration: BoxDecoration(
@@ -141,6 +146,9 @@ class MyApp extends StatelessWidget {
                                   onTap: () => _launchURL(_gitUrl),
                                   child: Column(
                                     children: [
+                                      Image(
+                                          image:
+                                              AssetImage('Images/github.png')),
                                       Icon(
                                         Icons.code,
                                       ),
