@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'My Portfolio App',
+        title: 'Goodluck Wile',
         theme: ThemeData(
           fontFamily: 'Mulish',
         ),
@@ -97,12 +97,7 @@ class MyApp extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFFC4C4C4),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                          )),
+                      color: Color(0xFFC4C4C4),
                       margin: EdgeInsets.only(top: 90.0),
                       width: 300,
                       child: Column(
